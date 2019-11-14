@@ -30,17 +30,26 @@ document.getElementById("text").style.textAlign = "left";
 
 ctx.font = "20px Times New Roman";
 ctx.fillStyle = 'rgb(0, 0, 200)';
-ctx.textAlign = "right";
-ctx.fillText("haha XD", canvas.width / 2, 50);
+ctx.textAlign = "left";
+ctx.fillText("haha XD", canvas.width / 50, 50);
 
 
+var i;
+for (i = 0; i < 160; i = i + 40) {
     ctx.beginPath();
-    ctx.moveTo(400, 400); // linjens startpunkt, X Y
-    ctx.lineTo(600, 550); // linjens slutpunkt, X Y
-    ctx.strokeStyle = getRandomColor(0.8); // slumpa en färg
+    ctx.moveTo(i, 300 + i); // linjens startpunkt, X Y
+    ctx.lineTo(i + 100, 600 + i); // linjens slutpunkt, X Y
+    ctx.strokeStyle = getRandomColor(0); // slumpa en färg
     ctx.lineWidth = "4"; // linjens bredd
     ctx.stroke();
 
+}
+
+let img = new Image();
+img.src = 'img/like.jpg';
+img.onload = function () {
+    ctx.drawImage(img, 400, 150, 256, 256);
+};
 
 function getRandomColor(alpha) {
     let r = Math.round(Math.random() * 255);
